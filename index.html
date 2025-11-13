@@ -164,7 +164,7 @@
         }
 
         section {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
@@ -173,7 +173,7 @@
         h2 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: var(--primary);
             font-weight: 900;
             text-align: center;
@@ -255,37 +255,49 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-top: 2rem;
         }
 
         .skill-card {
             background: var(--warm-light);
-            padding: 2rem 1.5rem;
+            padding: 2rem 1.8rem;
             border-radius: 20px;
-            text-align: center;
+            text-align: left;
             transition: all 0.3s ease;
             border: 2px solid transparent;
             animation: fadeInUp 0.6s ease-out;
             animation-fill-mode: both;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
             box-shadow: 0 10px 30px var(--shadow);
+            background: linear-gradient(135deg, var(--warm-light) 0%, rgba(59, 130, 246, 0.05) 100%);
         }
 
         .skill-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
         }
 
         .skill-name {
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-dark);
-            font-size: 1.1rem;
+            font-size: 1rem;
+            line-height: 1.4;
         }
 
         .projects-grid {
@@ -487,17 +499,23 @@
             }
 
             section {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
 
         /* Stagger animations */
         .skill-card:nth-child(1) { animation-delay: 0.1s; }
-        .skill-card:nth-child(2) { animation-delay: 0.2s; }
-        .skill-card:nth-child(3) { animation-delay: 0.3s; }
-        .skill-card:nth-child(4) { animation-delay: 0.4s; }
-        .skill-card:nth-child(5) { animation-delay: 0.5s; }
-        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+        .skill-card:nth-child(2) { animation-delay: 0.15s; }
+        .skill-card:nth-child(3) { animation-delay: 0.2s; }
+        .skill-card:nth-child(4) { animation-delay: 0.25s; }
+        .skill-card:nth-child(5) { animation-delay: 0.3s; }
+        .skill-card:nth-child(6) { animation-delay: 0.35s; }
+        .skill-card:nth-child(7) { animation-delay: 0.4s; }
+        .skill-card:nth-child(8) { animation-delay: 0.45s; }
 
         .project-card:nth-child(1) { animation-delay: 0.2s; }
         .project-card:nth-child(2) { animation-delay: 0.4s; }
@@ -508,14 +526,11 @@
     <canvas id="canvas-bg"></canvas>
 
     <header>
-        <div class="logo">
-    <img src="https://i.ibb.co/gZCSB1Nk/Gemini-Generated-Image-7xn7957xn7957xn7-removebg-preview.png" alt="Logo" style="width: 120px; height:auto;">
-</div>
-
+        <div class="logo">TU NOMBRE</div>
         <nav>
             <a href="#inicio">Inicio</a>
             <a href="#sobre-mi">Sobre Mí</a>
-            <a href="#habilidades">Habilidades</a>
+            <a href="#habilidades">Servicios</a>
             <a href="#proyectos">Proyectos</a>
             <a href="#contacto">Contacto</a>
         </nav>
@@ -539,7 +554,7 @@
             </div>
             <div class="about-image">
                 <div class="profile-photo-container">
-                    <img src="https://i.ibb.co/CKGNWw3s/Gemini-Generated-Image-8tr6ex8tr6ex8tr6.png" alt="Foto del autor" class="profile-photo">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/9d18c5183f1f3d58b72fe5addcea772f356eeb2d82f8b300631ed599906a901b?w=850&h=547" alt="Foto del autor" class="profile-photo">
                     <div class="photo-border"></div>
                 </div>
             </div>
@@ -547,31 +562,39 @@
     </section>
 
     <section id="habilidades">
-        <h2>Habilidades</h2>
+        <h2>Nuestros Servicios</h2>
         <div class="skills-grid">
             <div class="skill-card">
+                <div class="skill-icon">📚</div>
+                <div class="skill-name">Asesoría y desarrollo de proyectos universitarios</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎓</div>
+                <div class="skill-name">Elaboración y guía de tesis y mini tesis</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">✍️</div>
+                <div class="skill-name">Redacción y corrección de ensayos académicos</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-name">Creación de páginas web y portafolios digitales</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <div class="skill-name">Programación básica y avanzada (Python, HTML, JavaScript, etc.)</div>
+            </div>
+            <div class="skill-card">
                 <div class="skill-icon">🎨</div>
-                <div class="skill-name">Diseño UI/UX</div>
+                <div class="skill-name">Diseño y presentación de diapositivas profesionales</div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">⚡</div>
-                <div class="skill-name">JavaScript/React</div>
+                <div class="skill-icon">🔬</div>
+                <div class="skill-name">Talleres de investigación y metodología científica</div>
             </div>
             <div class="skill-card">
-                <div class="skill-icon">🎯</div>
-                <div class="skill-name">HTML/CSS</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🚀</div>
-                <div class="skill-name">Node.js</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">💎</div>
-                <div class="skill-name">Python</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-icon">🔧</div>
-                <div class="skill-name">Git/DevOps</div>
+                <div class="skill-icon">🛠️</div>
+                <div class="skill-name">Capacitación en herramientas digitales (Word, Excel, PowerPoint, Canva, etc.)</div>
             </div>
         </div>
     </section>
