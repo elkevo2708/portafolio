@@ -61,7 +61,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.5rem 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,16 +72,36 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--primary);
-            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo img {
+            width: 100px;
+            height: auto;
+            max-width: 100%;
         }
 
         nav {
             display: flex;
             gap: 2rem;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
         }
 
         nav a {
@@ -363,17 +383,31 @@
         .project-image {
             width: 100%;
             height: 240px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4.5rem;
-            position: relative;
-            overflow: hidden;
+        }
+
+        .project-image.with-background {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
         }
 
         .project-image i {
             color: white;
+            font-size: 4.5rem;
             z-index: 2;
             position: relative;
             transition: all 0.4s ease;
@@ -402,6 +436,7 @@
             width: 100%;
             height: 50%;
             background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+            z-index: 1;
         }
 
         .project-content {
@@ -427,6 +462,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
+            margin-bottom: 1rem;
         }
 
         .tag {
@@ -453,7 +489,6 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            margin-top: 1rem;
             transition: all 0.3s ease;
         }
 
@@ -658,6 +693,7 @@
             justify-content: center;
             gap: 1.5rem;
             margin-top: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .social-links a {
@@ -709,13 +745,54 @@
             }
         }
 
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
         @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo img {
+                width: 80px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
             nav {
-                gap: 1rem;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--warm-bg);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 2rem;
+                box-shadow: -5px 0 20px var(--shadow);
+                transition: right 0.3s ease;
+                align-items: flex-start;
+            }
+
+            nav.active {
+                right: 0;
             }
 
             nav a {
-                font-size: 0.85rem;
+                font-size: 1.1rem;
+                width: 100%;
+                padding: 0.5rem 0;
             }
 
             .about-content {
@@ -723,30 +800,120 @@
                 gap: 2rem;
             }
 
+            .about-image {
+                order: -1;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skill-card {
+                padding: 1.5rem 1.3rem;
+            }
+
+            .skill-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .skill-icon i {
+                font-size: 1.3rem;
             }
 
             .whatsapp-button {
                 padding: 1.2rem 2rem;
                 font-size: 1rem;
+                width: 100%;
+                max-width: 350px;
             }
 
             .phone-button {
                 padding: 1rem 2rem;
                 font-size: 1rem;
+                width: 100%;
+                max-width: 350px;
             }
 
             .contact-description {
                 font-size: 1rem;
             }
 
+            .contact-info {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .phone-number {
+                font-size: 1.2rem;
+                flex-wrap: wrap;
+            }
+
             section {
                 padding: 3rem 1.5rem;
             }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo img {
+                width: 70px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .skill-name {
+                font-size: 0.95rem;
+            }
+
+            .project-title {
+                font-size: 1.3rem;
+            }
+
+            .project-description {
+                font-size: 0.9rem;
+            }
+
+            .whatsapp-button,
+            .phone-button {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .whatsapp-icon,
+            .phone-icon {
+                font-size: 1.5rem;
             }
         }
 
@@ -771,10 +938,14 @@
 
     <header>
         <div class="logo">
-    <img src="https://i.ibb.co/nq5k8VSf/Flyer-Servicios-Club-de-Tareas-Clases-Ni-os-Colorido-Azul-y-Naranja.png" alt="Logo" style="width:120px; height:auto;">
-</div>
+            <img src="https://i.ibb.co/nq5k8VSf/Flyer-Servicios-Club-de-Tareas-Clases-Ni-os-Colorido-Azul-y-Naranja.png" alt="Logo Consultoría Sánchez">
+        </div>
 
-        <nav>
+        <button class="mobile-menu-btn" id="menuToggle" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <nav id="navMenu">
             <a href="#inicio">Inicio</a>
             <a href="#sobre-mi">Sobre Mí</a>
             <a href="#habilidades">Servicios</a>
@@ -866,11 +1037,9 @@
         <h2>Proyectos Destacados</h2>
         <div class="projects-grid">
             <div class="project-card">
-                    <div class="project-card">
-    <img src="https://scontent.fuio21-1.fna.fbcdn.net/v/t39.30808-6/358700916_791354385757513_312764392332050743_n.png?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=TSM4YLx9sRoQ7kNvwHRCvQ8&_nc_oc=Adk2LNDkc44y3O0aGTNpaQXly0acPPc0emH8b2NF2YjzHDS-srUvyBcnn6Ijw6M7HTA&_nc_zt=23&_nc_ht=scontent.fuio21-1.fna&_nc_gid=6RjrgTrHJ-86XUr8IDLTdg&oh=00_AfiT946Gdy_polj7t-RYpTBjxHris6iOh0annSZeQKaTLA&oe=691C37C3" alt="Logo" style="width:120px; height:auto;">
-
-  </div>
-              
+                <div class="project-image">
+                    <img src="https://scontent.fuio21-1.fna.fbcdn.net/v/t39.30808-6/358700916_791354385757513_312764392332050743_n.png?_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=TSM4YLx9sRoQ7kNvwHRCvQ8&_nc_oc=Adk2LNDkc44y3O0aGTNpaQXly0acPPc0emH8b2NF2YjzHDS-srUvyBcnn6Ijw6M7HTA&_nc_zt=23&_nc_ht=scontent.fuio21-1.fna&_nc_gid=6RjrgTrHJ-86XUr8IDLTdg&oh=00_AfiT946Gdy_polj7t-RYpTBjxHris6iOh0annSZeQKaTLA&oe=691C37C3" alt="Consultoría Sánchez">
+                </div>
                 <div class="project-content">
                     <h3 class="project-title">Consultoría Sánchez</h3>
                     <p class="project-description">Plataforma web profesional para servicios de asesoría académica y desarrollo de proyectos. Diseño moderno con sistema de gestión de contenidos y formulario de contacto integrado.</p>
@@ -887,7 +1056,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image">
+                <div class="project-image with-background">
                     <i class="fas fa-shopping-cart"></i>
                 </div>
                 <div class="project-content">
@@ -902,7 +1071,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image">
+                <div class="project-image with-background">
                     <i class="fas fa-music"></i>
                 </div>
                 <div class="project-content">
@@ -917,7 +1086,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-image">
+                <div class="project-image with-background">
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="project-content">
@@ -956,6 +1125,13 @@
                 </a>
             </div>
 
+            <div class="contact-info">
+                <p style="color: var(--text-medium); margin-bottom: 0.5rem; font-size: 0.95rem;">Número de contacto</p>
+                <p class="phone-number">
+                    <i class="fas fa-mobile-alt"></i>
+                    +593 93 996 1793
+                </p>
+            </div>
         </div>
     </section>
 
@@ -987,6 +1163,42 @@
                 document.documentElement.classList.add('dark');
             } else {
                 document.documentElement.classList.remove('dark');
+            }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+
+            if (navMenu.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
             }
         });
 
